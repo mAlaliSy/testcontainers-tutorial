@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,7 @@ public class TodoAPI {
     }
 
     @PostMapping("/todos")
-    public ResponseEntity<TodoItem> create(@RequestBody TodoItem todo) {
+    public ResponseEntity<TodoItem> create(@Valid @RequestBody TodoItem todo) {
         TodoItem saved = service.createTodo(todo);
         return ResponseEntity
                 .status(HttpStatus.CREATED)

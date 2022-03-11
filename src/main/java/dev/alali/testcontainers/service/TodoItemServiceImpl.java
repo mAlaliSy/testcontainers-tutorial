@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class TodoItemServiceImpl implements TodoItemService {
 
     @Override
     public TodoItem createTodo(TodoItem todo) {
+        todo.setCreatedAt(LocalDateTime.now());
         return repository.save(todo);
     }
 }
